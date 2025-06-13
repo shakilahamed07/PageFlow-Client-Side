@@ -3,8 +3,8 @@ import {
     createBrowserRouter,
   } from "react-router";
 import ErrorElement from '../Pages/ErrorElement'
-import Home from '../Pages/Home';
 import MainLayouts from '../Layouts/MainLayouts';
+import Home from '../Pages/Home/Home';
 
   export const router = createBrowserRouter([
     {
