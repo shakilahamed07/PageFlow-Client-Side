@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import { toast } from "react-toastify";
-// import { MdDarkMode } from "react-icons/md";
+import Logo from '../../src/assets/logo (2).png'
+import { MdDarkMode } from "react-icons/md";
 const Navbar = () => {
   const [showmodal, setShowModal] = useState(true);
   const { logOutUser, user } = useContext(AuthContext);
@@ -109,7 +110,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center justify-center gap-1">
-          <img className="w-8" src={``} alt="" />
+          <img className="w-8" src={Logo} alt="" />
           <h1 className="sm:text-2xl text-xl font-extrabold w-40">
             Page<span className="text-primary">Flow</span>
           </h1>
