@@ -1,16 +1,18 @@
 import React, { use, useState } from "react";
-import { useNavigate } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthProvider";
 import axios from "axios";
 
-const AddBook = () => {
+const UpdateBook = () => {
 
+    const bookSingle = useLoaderData();
+    const { name, image, shortDescription, authorName, category, rating, bookContent, quantity } = bookSingle;
     const {user} = use(AuthContext);
     const navigate =useNavigate()
     const [ratingE, setRatingE] = useState('');
 
-    const hendleAddBook = (e) =>{
+    const handleUpdate = (e) =>{
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
@@ -19,24 +21,24 @@ const AddBook = () => {
           return setRatingE("!Rating (1-5)")
         }
         setRatingE('')
-        const newBook = {
+        const updateBook = {
           email: user.email,
           ...rest,
           rating
         }
         // console.log(newBook)
         
-        // //* POST database
-        axios.post(`http://localhost:5000/add-book`, newBook)
+        //* Update database
+        axios.put(`http://localhost:5000/book-update/${bookSingle._id}`, updateBook)
         .then(data=>{
-              if(data.data.insertedId){
+              if(data.data.modifiedCount){
                   Swal.fire({
-                      title: "Successfully Add Book!",
+                      title: "Successfully Update Book!",
                       icon: "success",
                       draggable: true,
                       timer: 1500
                     });
-                    navigate('/')
+                    navigate(-1)
               }
           })
         .catch(err=> console.log(err))
@@ -47,10 +49,10 @@ const AddBook = () => {
     <div className="shadow-xl md:px-8 rounded-2xl md:mx-5 mx-2 px-2 my-2 pt-2 mb-10">
       <div className="mx-3">
         <h1 className="text-3xl font-bold text-center mb-3 mt-10 ">
-          Add Book
+          Update Book
         </h1>
 
-        <form onSubmit={hendleAddBook}>
+        <form onSubmit={handleUpdate}>
           <div className="grid sm:grid-cols-2 sm:gap-x-10 md:gap-x-20">
             {/*Name*/}
             <fieldset className="fieldset max-w-2xl rounded-box  py-5">
@@ -58,6 +60,7 @@ const AddBook = () => {
               <input
                 type="text"
                 name="name"
+                defaultValue={name}
                 className="input w-full   rounded-2xl border-primary focus:outline-none"
                 placeholder="Book name"
                 required
@@ -69,6 +72,7 @@ const AddBook = () => {
               <input
                 type="text"
                 name="image"
+                defaultValue={image}
                 className="input w-full   rounded-2xl border-primary focus:outline-none"
                 placeholder="Image URL"
                 required
@@ -80,6 +84,7 @@ const AddBook = () => {
               <select
                 name="category"
                 className="input w-full  rounded-2xl border-primary focus:outline-none"
+                defaultValue={category}
               >
                 <option value="">--Select one--</option>
                 <option value="Science">Science</option>
@@ -96,6 +101,7 @@ const AddBook = () => {
                 name="authorName"
                 className="input w-full rounded-2xl border-primary focus:outline-none"
                 placeholder="Author Name"
+                defaultValue={authorName}
                 required
               />
             </fieldset>
@@ -105,6 +111,7 @@ const AddBook = () => {
               <input
                 type="number"
                 name="quantity"
+                defaultValue={quantity}
                 className="input w-full rounded-2xl border-primary focus:outline-none"
                 placeholder="Type quantity"
                 required
@@ -116,6 +123,7 @@ const AddBook = () => {
               <input
                 type="float"
                 name="rating"
+                defaultValue={rating}
                 className="input w-full rounded-2xl border-primary focus:outline-none"
                 placeholder="1 - 5 rating"
                 required
@@ -128,6 +136,7 @@ const AddBook = () => {
               <textarea
                 type="text"
                 name="shortDescription"
+                defaultValue={shortDescription}
                 className="input w-full rounded-2xl border-primary focus:outline-none textarea resize-none"
                 placeholder="Description"
                 required
@@ -139,6 +148,7 @@ const AddBook = () => {
               <textarea
                 type="text"
                 name="bookContent"
+                defaultValue={bookContent}
                 className="input w-full resize-none rounded-2xl border-primary focus:outline-none textarea"
                 placeholder="Book Content"
                 required
@@ -150,7 +160,7 @@ const AddBook = () => {
               type="submit"
               className="border  border-primary text-white bg-primary font-bold rounded-full hover:bg-secondary py-2 md:px-50 px-25 mb-10"
             >
-              Add Book
+              Update Book
             </button>
           </div>
         </form>
@@ -159,4 +169,4 @@ const AddBook = () => {
   );
 };
 
-export default AddBook;
+export default UpdateBook;

@@ -15,6 +15,8 @@ const Home = () => {
           <BooksCategary name={"Non-Fiction"} dis={"Non-Fictional books"} img={'https://cdn-icons-png.freepik.com/256/2275/2275481.png?ga=GA1.1.751526860.1746424154&semt=ais_hybrid'} />
         </div>
       </section>
+
+
     </div>
   );
 };
