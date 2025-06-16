@@ -12,7 +12,7 @@ const CategorisBooks = () => {
       <h1 className="md:text-3xl text-xl font-bold text-center mt-3 mb-8">
         Category Name : {categoryName}
       </h1>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 max-w-6xl mx-auto mt-8">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 lg:max-w-6xl md:max-w-2xl mx-auto mt-8">
         {categoryBooks.map((categoryBook, index) => (
           <CategoryBookCard categoryBook={categoryBook} key={index} />
         ))}

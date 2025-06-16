@@ -62,7 +62,6 @@ const AuthProvider = ({children}) => {
         updateUser,
         passwordReset,
     }
-    console.log(user)
 
     return (
         <AuthContext.Provider value={authData}>

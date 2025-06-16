@@ -42,6 +42,8 @@ const BookDetails = () => {
       displayName,
       image,
       name,
+      category,
+      quantity,
       retuneDate,
       borrowDate: date
     };
