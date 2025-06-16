@@ -24,7 +24,8 @@ const AddBook = () => {
           email: user.email,
           ...rest,
           rating,
-          quantity: convertQuantity
+          quantity: convertQuantity,
+          borrowList: []
         }
         // console.log(newBook)
         

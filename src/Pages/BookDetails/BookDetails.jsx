@@ -18,6 +18,7 @@ const BookDetails = () => {
     quantity,
     category,
     bookContent,
+    borrowList
   } = bookDetails;
 
   const handleBorrow = () => {
@@ -45,7 +46,8 @@ const BookDetails = () => {
       category,
       quantity,
       retuneDate,
-      borrowDate: date
+      borrowDate: date,
+      borrowList,
     };
 
     //* Save Database
@@ -61,7 +63,17 @@ const BookDetails = () => {
         navigate('/my-borrow')
       }
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      if(err.response.status){
+        Swal.fire({
+          title: "Already Add Borrow!",
+          icon: "error",
+          draggable: true,
+          timer: 2000
+        });
+        navigate('/my-borrow')
+      }
+    })
   };
 
   useEffect(()=>{
