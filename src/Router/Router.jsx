@@ -14,6 +14,8 @@ import MyBorrow from '../Pages/MyBorrow/MyBorrow';
 import Loader from '../Components/Loader';
 import axios from 'axios';
 import UpdateBook from '../Pages/AllBooks/UpdateBook';
+import CategorisBooks from '../Pages/CategorisBooks/CategorisBooks';
+import BookDetails from '../Pages/BookDetails/BookDetails';
 
   export const router = createBrowserRouter([
     {
@@ -24,6 +26,7 @@ import UpdateBook from '../Pages/AllBooks/UpdateBook';
         {
           index: true,
           path:'/',
+          loader: ()=> fetch(`/category.json`),
           Component: Home
         },
         {
@@ -49,6 +52,16 @@ import UpdateBook from '../Pages/AllBooks/UpdateBook';
         {
           path: '/add-book',
           element: <PriveteRoute><AddBook/></PriveteRoute>
+        },
+        {
+          path: '/category-books/:id',
+          loader: ({params})=> fetch(`http://localhost:5000/categories/${params.id}`),
+          element: <PriveteRoute><CategorisBooks/></PriveteRoute>
+        },
+        {
+          path: '/book-details/:id',
+          loader: ({params})=> fetch(`http://localhost:5000/books/${params.id}`),
+          element: <PriveteRoute><BookDetails/></PriveteRoute>
         },
         {
           path: '/my-borrow',
