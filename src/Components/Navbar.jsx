@@ -42,7 +42,7 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/all-books" className="font-medium">
+        <NavLink to="/all-books" className={`${user ? "block" : "hidden"} font-medium`}>
           All Books
         </NavLink>
       </li>

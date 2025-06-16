@@ -10,7 +10,7 @@ const BooksCategary = ({category}) => {
     }
 
     return (
-        <div onClick={()=>handleViewCategory(category.name)} className='flex items-center justify-between px-4 shadow-md rounded-2xl py-10 w-[360px] mx-auto'>
+        <div onClick={()=>handleViewCategory(category.name)} className='flex items-center justify-between px-4 shadow-md rounded-2xl py-10 w-[360px] mx-auto bg-linear-to-bl from-base-200 to-'>
             <div className="">
                 <h1 className='text-3xl font-bold'>{category.name}</h1>
                 <p className='mb-6'>{category.dis}</p>

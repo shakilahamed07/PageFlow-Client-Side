@@ -56,7 +56,7 @@ import BookDetails from '../Pages/BookDetails/BookDetails';
         {
           path: '/category-books/:id',
           loader: ({params})=> fetch(`http://localhost:5000/categories/${params.id}`),
-          element: <PriveteRoute><CategorisBooks/></PriveteRoute>
+          element: <CategorisBooks/>
         },
         {
           path: '/book-details/:id',

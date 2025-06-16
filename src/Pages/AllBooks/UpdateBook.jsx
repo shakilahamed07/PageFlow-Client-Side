@@ -16,15 +16,17 @@ const UpdateBook = () => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
-        const {rating, ...rest} =  Object.fromEntries(formData.entries())
+        const {rating, quantity, ...rest} =  Object.fromEntries(formData.entries())
         if(rating>5){
           return setRatingE("!Rating (1-5)")
         }
         setRatingE('')
+        const convertQuantity = parseInt(quantity);
         const updateBook = {
           email: user.email,
           ...rest,
-          rating
+          rating,
+          quantity: convertQuantity
         }
         // console.log(newBook)
         
