@@ -1,52 +1,61 @@
-import React, { use, useState } from "react";
-import { useLoaderData, useNavigate } from "react-router";
+import React, { use, useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthProvider";
-import axios from "axios";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
+import { useParams } from "react-router";
 
 const UpdateBook = () => {
+  const axiosSecure = useAxiosSecure();
+  const [bookSingle, setBookSingle] = useState([]);
+  const {id} = useParams()
 
-    const bookSingle = useLoaderData();
-    const { name, image, shortDescription, authorName, category, rating, bookContent, quantity } = bookSingle;
-    const {user} = use(AuthContext);
-    const navigate =useNavigate()
-    const [ratingE, setRatingE] = useState('');
+  useEffect(() => {
+    axiosSecure(`/books/${id}`)
+      .then((res) => setBookSingle(res.data))
+      .catch((err) => console.log(err));
+  }, []);
 
-    const handleUpdate = (e) =>{
-        e.preventDefault();
-        const form = e.target;
-        const formData = new FormData(form);
-        const {rating, quantity, ...rest} =  Object.fromEntries(formData.entries())
-        if(rating>5){
-          return setRatingE("!Rating (1-5)")
-        }
-        setRatingE('')
-        const convertQuantity = parseInt(quantity);
-        const updateBook = {
-          email: user.email,
-          ...rest,
-          rating,
-          quantity: convertQuantity,
-          borrowList: []
-        }
-        // console.log(newBook)
-        
-        //* Update database
-        axios.put(`http://localhost:5000/book-update/${bookSingle._id}`, updateBook)
-        .then(data=>{
-              if(data.data.modifiedCount){
-                  Swal.fire({
-                      title: "Successfully Update Book!",
-                      icon: "success",
-                      draggable: true,
-                      timer: 1500
-                    });
-                    navigate(-1)
-              }
-          })
-        .catch(err=> console.log(err))
-    }
 
+  const { name, image, shortDescription, authorName, category, rating, bookContent, quantity } = bookSingle;
+  
+  const {user} = use(AuthContext);
+  const navigate =useNavigate()
+  const [ratingE, setRatingE] = useState('');
+
+  const handleUpdate = (e) =>{
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+      const {rating, quantity, ...rest} =  Object.fromEntries(formData.entries())
+      if(rating>5){
+        return setRatingE("!Rating (1-5)")
+      }
+      setRatingE('')
+      const convertQuantity = parseInt(quantity);
+      const updateBook = {
+        email: user.email,
+        ...rest,
+        rating,
+        quantity: convertQuantity,
+        borrowList: []
+      }
+
+  //     //* Update database
+      axiosSecure.put(`http://localhost:5000/book-update/${bookSingle._id}`, updateBook)
+      .then(data=>{
+            if(data.data.modifiedCount){
+                Swal.fire({
+                    title: "Successfully Update Book!",
+                    icon: "success",
+                    draggable: true,
+                    timer: 1500
+                  });
+                  navigate(-1)
+            }
+        })
+      .catch(err=> console.log(err))
+  }
 
   return (
     <div className="shadow-xl md:px-8 rounded-2xl md:mx-5 mx-2 px-2 my-2 pt-2 mb-10">
@@ -87,9 +96,9 @@ const UpdateBook = () => {
               <select
                 name="category"
                 className="input w-full  rounded-2xl border-primary focus:outline-none"
-                defaultValue={category}
+                id="Dropdown"
               >
-                <option value="">--Select one--</option>
+                <option value={category}>--Select one--</option>
                 <option value="Science">Science</option>
                 <option value="History">History</option>
                 <option value="Fiction">Fiction</option>

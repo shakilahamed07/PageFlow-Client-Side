@@ -1,23 +1,32 @@
 import React, { use, useEffect, useState } from "react";
 import BorrowCard from "./BorrowCard";
-import axios from "axios";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
-import { img } from "motion/react-client";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
+import Loader from "../../Components/Loader";
 
 const MyBorrow = () => {
+  const axiosSecure = useAxiosSecure();
   const { user } = use(AuthContext);
   const [myBorrow, setMyBorrow] = useState([]);
+  const [loader, setLoader] = useState(true);
   useEffect(() => {
-    axios(`http://localhost:5000/borrow/${user.email}`)
-      .then((res) => setMyBorrow(res.data))
+    axiosSecure(`/borrow/${user.email}`)
+      .then((res) => {
+        setMyBorrow(res.data)
+        setLoader(false)
+      })
       .catch((err) => console.log(err));
   }, []);
 
-  const handleRetuneBook = (id) => {
+  if(loader){
+    return <Loader></Loader>
+  }
+
+  const handleRetuneBook = (_id, id) => {
     //* retune
-    axios
-      .delete(`http://localhost:5000/borrow/${id}`)
+    axiosSecure
+      .delete(`http://localhost:5000/borrow/${_id}`)
       .then((res) => {
         if (res.data.deletedCount) {
           Swal.fire({
@@ -27,7 +36,7 @@ const MyBorrow = () => {
             timer: 1000,
           });
 
-          const reamingBorrow = myBorrow.filter((borrow) => borrow.id !== id);
+          const reamingBorrow = myBorrow.filter((borrow) => borrow._id !== _id);
           setMyBorrow(reamingBorrow);
         }
       })
@@ -36,7 +45,7 @@ const MyBorrow = () => {
     const email = {
       email: user.email,
     };
-    axios
+    axiosSecure
       .patch(`http://localhost:5000/borrow/${id}`, email)
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
@@ -47,7 +56,7 @@ const MyBorrow = () => {
       {myBorrow.length < 1 ? (
         <div className="mt-10">
           <img
-            className="max-w-2xs mx-auto"
+            className="max-w-2xs mx-auto my-auto"
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRi5P6Q_fdVlVztoz8DIiqVesAnefc3CMwsVA&s"
           ></img>
           <h1 className="text-center text-3xl font-bold">Not Found!</h1>

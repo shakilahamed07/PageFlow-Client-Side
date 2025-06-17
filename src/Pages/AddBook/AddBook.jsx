@@ -2,11 +2,13 @@ import React, { use, useState } from "react";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthProvider";
-import axios from "axios";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 const AddBook = () => {
 
     const {user} = use(AuthContext);
+  const axiosSecure = useAxiosSecure();
+
     const navigate =useNavigate()
     const [ratingE, setRatingE] = useState('');
 
@@ -30,7 +32,7 @@ const AddBook = () => {
         // console.log(newBook)
         
         // //* POST database
-        axios.post(`http://localhost:5000/add-book`, newBook)
+        axiosSecure.post(`http://localhost:5000/add-book`, newBook)
         .then(data=>{
               if(data.data.insertedId){
                   Swal.fire({

@@ -12,7 +12,6 @@ import PriveteRoute from './PriveteRoute';
 import AddBook from '../Pages/AddBook/AddBook';
 import MyBorrow from '../Pages/MyBorrow/MyBorrow';
 import Loader from '../Components/Loader';
-import axios from 'axios';
 import UpdateBook from '../Pages/AllBooks/UpdateBook';
 import CategorisBooks from '../Pages/CategorisBooks/CategorisBooks';
 import BookDetails from '../Pages/BookDetails/BookDetails';
@@ -39,14 +38,10 @@ import BookDetails from '../Pages/BookDetails/BookDetails';
         },
         {
           path: '/all-books',
-          hydrateFallbackElement: Loader,
-          loader: ()=> axios.get('http://localhost:5000/books'),
           element: <PriveteRoute><AllBooks/></PriveteRoute>
         },
         {
           path: '/update-book/:id',
-          hydrateFallbackElement: Loader,
-          loader: ({params})=> fetch(`http://localhost:5000/books/${params.id}`),
           element: <PriveteRoute><UpdateBook/></PriveteRoute>
         },
         {
@@ -60,7 +55,6 @@ import BookDetails from '../Pages/BookDetails/BookDetails';
         },
         {
           path: '/book-details/:id',
-          loader: ({params})=> fetch(`http://localhost:5000/books/${params.id}`),
           element: <PriveteRoute><BookDetails/></PriveteRoute>
         },
         {

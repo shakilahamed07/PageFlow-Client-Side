@@ -20,7 +20,7 @@ const BorrowCard = ({ book, handleRetuneBook }) => {
         <p className="mb-2">Retune Date: {retuneDate}</p>
         <div className="card-actions">
           <button
-            onClick={() => handleRetuneBook(id)}
+            onClick={() => handleRetuneBook(_id, id)}
             className="btn w-69 mx-auto btn-primary rounded-3xl border-none"
           >
             Retune Book

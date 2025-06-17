@@ -1,14 +1,23 @@
-import React, { use, useEffect} from "react";
+import React, { use, useEffect, useState} from "react";
 import { FaStar } from "react-icons/fa";
-import { useLoaderData, useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { AuthContext } from "../../Context/AuthProvider";
-import axios from "axios";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 const BookDetails = () => {
   const { user } = use(AuthContext);
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
-  const bookDetails = useLoaderData();
+  const [bookDetails, setbookDetails] = useState([]);
+  const {id} = useParams()
+
+  useEffect(() => {
+    axiosSecure(`/books/${id}`)
+      .then((res) => setbookDetails(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
   const {
     _id,
     name,
@@ -51,7 +60,7 @@ const BookDetails = () => {
     };
 
     //* Save Database
-    axios.post(`http://localhost:5000/add-borrow/${_id}`, borrowData)
+    axiosSecure.post(`http://localhost:5000/add-borrow/${_id}`, borrowData)
     .then(res => {
       if(res.data.insertedId){
         Swal.fire({
@@ -63,8 +72,8 @@ const BookDetails = () => {
         navigate('/my-borrow')
       }
     })
-    .catch(err => {
-      if(err.response.status){
+    .catch(error => {
+      console.log(error)
         Swal.fire({
           title: "Already Add Borrow!",
           icon: "error",
@@ -72,7 +81,6 @@ const BookDetails = () => {
           timer: 2000
         });
         navigate('/my-borrow')
-      }
     })
   };
 

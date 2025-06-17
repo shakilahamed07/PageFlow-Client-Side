@@ -1,14 +1,30 @@
-import React, { useState } from "react";
-import { useLoaderData } from "react-router";
+import React, {useEffect, useState } from "react";
 import CardUpdate from "../AddBook/CardUpdate";
 import { BiSolidShow } from "react-icons/bi";
 import { MdGridView } from "react-icons/md";
 import TableView from "../AddBook/TableView";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
+import Loader from "../../Components/Loader";
 
 const AllBooks = () => {
-  const books = useLoaderData();
-  const [allBooks, setAllBooks] = useState(books.data);
+  const axiosSecure = useAxiosSecure();
+  const [allBooks, setAllBooks] = useState([]);
   const [viewType, setViewType] = useState("card");
+  const [loader, setLoader] = useState(true);
+
+  useEffect(() => {
+    axiosSecure(`/books`)
+      .then((res) => {
+        setAllBooks(res.data)
+        setLoader(false)}
+      )
+      .catch((err) => console.log(err));
+  }, []);
+
+  if(loader){
+    return <Loader></Loader>
+  }
+  
 
   const handleQuantity = () => {
     const available = allBooks.filter((book) => book.quantity > 0);
@@ -19,7 +35,6 @@ const AllBooks = () => {
     const view = e.target.value;
     setViewType(view);
   };
-  console.log(viewType);
 
   return (
     <div>
