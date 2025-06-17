@@ -4,6 +4,7 @@ import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Loader from "../../Components/Loader";
+import { Helmet } from "react-helmet";
 
 const MyBorrow = () => {
   const axiosSecure = useAxiosSecure();
@@ -53,6 +54,10 @@ const MyBorrow = () => {
 
   return (
     <div className="mb-10 mx-2">
+      <Helmet>
+        <title> PageFlow || My Borrow</title>
+      </Helmet>
+
       {myBorrow.length < 1 ? (
         <div className="mt-10">
           <img

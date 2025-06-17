@@ -4,6 +4,7 @@ import { AuthContext } from "../../Context/AuthProvider";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { toast } from "react-toastify";
 import { auth } from "../../Firebase/Firebase-init";
+import { Helmet } from "react-helmet";
 
 
 
@@ -58,6 +59,10 @@ const Login = () => {
 
   return (
     <div className="mx-3">
+      <Helmet>
+        <title>PageFlow || Login Page</title>
+      </Helmet>
+
       <div className="card  w-full max-w-md px-10 py-5 rounded-3xl shrink-0 shadow-xl mx-auto my-15 ">
       <div className="card-body">
         <h1 className="font-bold text-2xl text-center -z-1">Login Now</h1>

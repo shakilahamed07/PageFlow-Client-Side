@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthProvider";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 const AddBook = () => {
 
@@ -50,6 +51,10 @@ const AddBook = () => {
 
   return (
     <div className="shadow-xl md:px-8 rounded-2xl md:mx-5 mx-2 px-2 my-2 pt-2 mb-10">
+      <Helmet>
+        <title>PageFlow || Add Book</title>
+      </Helmet>
+
       <div className="mx-3">
         <h1 className="text-3xl font-bold text-center mb-3 mt-10 ">
           Add Book

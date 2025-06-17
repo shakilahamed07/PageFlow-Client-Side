@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 const BookDetails = () => {
   const { user } = use(AuthContext);
@@ -92,6 +93,9 @@ const BookDetails = () => {
 
   return (
     <>
+    <Helmet>
+        <title>PageFlow || Book Details</title>
+      </Helmet>
       <div className="md:flex justify-center items-center gap-10 md:py-20 pt-5 pb-10 rounded-3xl space-y-10 md:space-y-0 shadow-xl mb-10 mx-2">
         <div className="bg-base-300 md:px-18 md:py-20 py-5 rounded-2xl flex justify-center mx-8">
           <img className="rounded-xl " src={image} alt="Book img" />

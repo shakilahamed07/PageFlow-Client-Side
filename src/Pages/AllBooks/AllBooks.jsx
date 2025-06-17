@@ -5,6 +5,7 @@ import { MdGridView } from "react-icons/md";
 import TableView from "../AddBook/TableView";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Loader from "../../Components/Loader";
+import { Helmet } from "react-helmet";
 
 const AllBooks = () => {
   const axiosSecure = useAxiosSecure();
@@ -38,6 +39,9 @@ const AllBooks = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>PageFlow || All Book</title>
+      </Helmet>
       <div className="sm:flex items-center justify-between max-w-6xl mx-auto mb-3 sm:px-10 px-3">
         <button onClick={handleQuantity} className="btn font-bold">
           Show Available Books

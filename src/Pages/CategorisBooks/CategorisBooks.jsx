@@ -1,6 +1,7 @@
 import React from "react";
 import { useLoaderData, useLocation } from "react-router";
 import CategoryBookCard from "./CategoryBookCard";
+import { Helmet } from "react-helmet";
 
 const CategorisBooks = () => {
   const categoryBooks = useLoaderData();
@@ -9,6 +10,9 @@ const CategorisBooks = () => {
 
   return (
     <div className="mb-10 mx-2">
+      <Helmet>
+        <title>PageFlow || Category {categoryName}</title>
+      </Helmet>
       <h1 className="md:text-3xl text-xl font-bold text-center mt-3 mb-8">
         Category Name : {categoryName}
       </h1>

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router";
 
 import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { crateUser, updateUser } = useContext(AuthContext);
@@ -52,11 +53,12 @@ const Register = () => {
 
   return (
     <div className="mx-3">
+      <Helmet>
+        <title>PageFlow || Register Page</title>
+      </Helmet>
       <div className="card w-full max-w-md py-5 rounded-3xl shrink-0 shadow-2xl mx-auto my-15  px-10 ">
         <div className="card-body">
-          <h1 className="font-bold text-2xl text-center -z-10">
-            Register Now
-          </h1>
+          <h1 className="font-bold text-2xl text-center -z-10">Register Now</h1>
           <form onSubmit={hendleRegister} className="fieldset">
             {/* //*Name*/}
             <label className="">Name</label>
