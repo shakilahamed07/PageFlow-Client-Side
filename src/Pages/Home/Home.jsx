@@ -3,6 +3,8 @@ import Hero from "./Hero";
 import BooksCategary from "./BooksCategary";
 import { useLoaderData } from "react-router";
 import { Helmet } from "react-helmet";
+import FaqSection from "./FaqSection"
+import Sponsor from "./Sponsor";
 
 const Home = () => {
   const categorys = useLoaderData();
@@ -20,6 +22,16 @@ const Home = () => {
             categorys.map((category, index) => <BooksCategary category={category} key={index} />)
           }
         </div>
+      </section>
+
+      <section>
+        <h1 className="text-3xl font-bold text-center mt-15">FAQ Section</h1>
+        <FaqSection/>
+      </section>
+
+      <section>
+        <h1 className="text-3xl font-bold text-center mt-15 mb-5">Our Sponsor</h1>
+        <Sponsor/>
       </section>
 
 
