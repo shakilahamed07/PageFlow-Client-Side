@@ -50,7 +50,8 @@ import BookDetails from '../Pages/BookDetails/BookDetails';
         },
         {
           path: '/category-books/:id',
-          loader: ({params})=> fetch(`http://localhost:5000/categories/${params.id}`),
+          hydrateFallbackElement: <Loader/>,
+          loader: ({params})=> fetch(`https://page-flow-server-side.vercel.app/categories/${params.id}`),
           element: <CategorisBooks/>
         },
         {

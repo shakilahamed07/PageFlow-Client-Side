@@ -42,7 +42,7 @@ const UpdateBook = () => {
       }
 
   //     //* Update database
-      axiosSecure.put(`http://localhost:5000/book-update/${bookSingle._id}`, updateBook)
+      axiosSecure.put(`https://page-flow-server-side.vercel.app/book-update/${bookSingle._id}`, updateBook)
       .then(data=>{
             if(data.data.modifiedCount){
                 Swal.fire({

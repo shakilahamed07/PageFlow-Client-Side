@@ -27,7 +27,7 @@ const MyBorrow = () => {
   const handleRetuneBook = (_id, id) => {
     //* retune
     axiosSecure
-      .delete(`http://localhost:5000/borrow/${_id}`)
+      .delete(`https://page-flow-server-side.vercel.app/borrow/${_id}`)
       .then((res) => {
         if (res.data.deletedCount) {
           Swal.fire({
@@ -47,7 +47,7 @@ const MyBorrow = () => {
       email: user.email,
     };
     axiosSecure
-      .patch(`http://localhost:5000/borrow/${id}`, email)
+      .patch(`https://page-flow-server-side.vercel.app/borrow/${id}`, email)
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   };
