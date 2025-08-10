@@ -66,7 +66,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/my-borrow"
+          to="/about"
           className={`font-medium`}
         >
           About
@@ -77,7 +77,7 @@ const Navbar = () => {
 
   return (
     <div className="bg-base-200 sticky top-0 z-50 shadow">
-      <div className="navbar mb-3 max-w-[1350px] mx-auto justify-between ">
+      <div className="navbar max-w-[1350px] mx-auto justify-between ">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -159,9 +159,16 @@ const Navbar = () => {
             </svg>
           </label>
 
-          <Link
+          {
+            user? <button
+            onClick={hendleLogout}
+            className="bg-primary hover:bg-secondary text-white font-bold py-1.5 px-4 rounded-md lg:block hidden"
+          >
+            Log Out
+          </button> : <>
+            <Link
             to="/login"
-            className="bg-primary hover:bg-secondary text-white font-bold py-1.5 px-4 rounded-md hidden sm:flex"
+            className="bg-primary hover:bg-secondary text-white font-bold py-1.5 px-4 rounded-md"
           >
             Login
           </Link>
@@ -171,6 +178,8 @@ const Navbar = () => {
           >
             Register
           </Link>
+            </>
+          }
 
           {user && (
             <>

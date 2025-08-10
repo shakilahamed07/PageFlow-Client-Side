@@ -4,7 +4,7 @@ const BorrowCard = ({ book, handleRetuneBook }) => {
   const { id,_id, name, image, category, retuneDate, borrowDate } = book;
 
   return (
-    <div className="card bg-base-100 w-82 mx-auto shadow-md border border-gray-200 rounded-2xl">
+    <div className="card bg-base-100 w-82 mx-auto shadow-md rounded-2xl">
       <figure>
         <img className="pt-3" src={image} alt="Book img" />
       </figure>

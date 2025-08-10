@@ -9,7 +9,7 @@ import Sponsor from "./Sponsor";
 const Home = () => {
   const categorys = useLoaderData();
   return (
-    <div className="max-w-[1350px] mx-auto">
+    <div className="">
       <Helmet>
         <title>PageFlow || Home</title>
       </Helmet>
