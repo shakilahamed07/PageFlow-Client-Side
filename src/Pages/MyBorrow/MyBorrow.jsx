@@ -70,7 +70,7 @@ const MyBorrow = () => {
         </div>
       ) : (
         <>
-          <h1 className="md:text-3xl text-xl font-bold text-center mt-3 mb-8">
+          <h1 className="md:text-2xl text-xl font-medium text-center mt-3 mb-8">
             My Borrow
           </h1>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 lg:max-w-6xl md:max-w-2xl mx-auto mt-8">

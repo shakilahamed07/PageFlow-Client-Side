@@ -15,6 +15,7 @@ import Loader from '../Components/Loader';
 import UpdateBook from '../Pages/AllBooks/UpdateBook';
 import CategorisBooks from '../Pages/CategorisBooks/CategorisBooks';
 import BookDetails from '../Pages/BookDetails/BookDetails';
+import AboutPage from '../Pages/AboutPage/AboutPage';
 
   export const router = createBrowserRouter([
     {
@@ -59,6 +60,10 @@ import BookDetails from '../Pages/BookDetails/BookDetails';
         {
           path: '/my-borrow',
           element: <PriveteRoute><MyBorrow/></PriveteRoute>
+        },
+        {
+          path: '/about',
+          element: <AboutPage/>
         },
       ]
     },

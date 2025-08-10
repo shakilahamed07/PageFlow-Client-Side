@@ -2,12 +2,12 @@ import React from "react";
 
 const FaqSection = () => {
   return (
-    <div className="">
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-6 bg-base-100 p-8 md:p-16 space-y-8 md:space-y-0 mb-10 rounded-2xl mx-2">
+    <div className="max-w-[1350px] mx-auto">
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-6  space-y-8 md:space-y-0  rounded-2xl mx-2">
         {/* Left - Image and person info */}
         <div className="relative w-full lg:w-1/2">
           <img
-            src="https://img.freepik.com/free-vector/curiosity-people-concept-illustration_114360-11034.jpg?ga=GA1.1.751526860.1746424154&semt=ais_hybrid&w=740" // Replace with actual image path
+            src="https://i.ibb.co.com/C5ZwgXhw/FAQs-pana.png" 
             alt=""
             className="rounded-xl mx-auto"
           />

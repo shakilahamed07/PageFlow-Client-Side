@@ -31,7 +31,7 @@ const CategorisBooks = () => {
       <Helmet>
         <title>PageFlow || Category {categoryName}</title>
       </Helmet>
-      <h1 className="md:text-3xl text-xl font-bold text-center mt-5 mb-8">
+      <h1 className="md:text-2xl text-xl font-medium text-center mt-5 mb-8">
         Category Name : {categoryName}
       </h1>
       <div className="flex flex-wrap justify-center gap-2 mb-10">

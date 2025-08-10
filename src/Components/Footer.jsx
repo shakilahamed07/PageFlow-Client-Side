@@ -25,12 +25,7 @@ const Footer = () => {
           <a className="">Phone: +8801772144965</a>
           <a className="">WhatsApp: +880134614946</a>
         </nav>
-        <nav>
-          <h6 className="footer-title">Legal</h6>
-          <a className="link link-hover">Terms of use</a>
-          <a className="link link-hover">Privacy policy</a>
-          <a className="link link-hover">Cookie policy</a>
-        </nav>
+        
         <nav>
           <h6 className="footer-title">Social</h6>
           <div className="flex gap-5">

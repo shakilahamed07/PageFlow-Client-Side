@@ -41,7 +41,7 @@ const AllBooks = () => {
       <Helmet>
         <title>PageFlow || All Book</title>
       </Helmet>
-      <div className="sm:flex items-center justify-between max-w-[1350px] mx-auto mb-3 px-3">
+      <div className="sm:flex items-center justify-between max-w-[1350px] mx-auto sm:mb-3  px-3">
       <div className="">
           <fieldset className="fieldset flex items-start rounded-box py-5 max-w-2xl ">
             <label className="text-xl mb-1 font-medium flex items-center gap-1">
@@ -60,14 +60,14 @@ const AllBooks = () => {
           </fieldset>
         </div>
         <div className="">
-          <fieldset className="fieldset flex items-start rounded-box py-5 max-w-2xl ">
+          <fieldset className="fieldset flex items-start rounded-box sm:py-5 max-w-2xl mb-5 sm:mb-0">
             <label className="text-2xl mb-1 font-bold flex items-center gap-1">
               <MdGridView />
               View :
             </label>
             <select
               name="category"
-              className="input w-30  rounded-2xl border-primary focus:outline-none cursor-pointer"
+              className="input w-30  rounded-md border-primary focus:outline-none cursor-pointer"
               onChange={handleView}
             >
               <option value="card">Card view</option>

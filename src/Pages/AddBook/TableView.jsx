@@ -11,14 +11,12 @@ const { name, image, authorName } = book;
         <h2 className="card-title max-w-50">{name}</h2>
         <p className="font-medium">{authorName}</p>
       </div>
-      <p className="mb-2 sm:block hidden max-w-40">Category: {book.category}</p>
       <div className="">
         <Link
-          to={`/update-book/${book._id}`}
+          to={`/book-details/${book._id}`}
           className="btn mx-auto btn-primary"
         >
-          <GrUpdate />
-          Update
+          Details
         </Link>
       </div>
     </div>
