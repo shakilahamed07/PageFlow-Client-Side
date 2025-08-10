@@ -14,7 +14,7 @@ const CategorisBooks = () => {
   const [loader, setLoader] = useState(true);
 
   useEffect(() => {
-    axios(`http://localhost:5000/categories/${categoryName}`)
+    axios(`https://page-flow-server-side.vercel.app/categories/${categoryName}`)
       .then((res) => {
         setCategoryBooks(res.data)
         setLoader(false)

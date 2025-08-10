@@ -15,7 +15,7 @@ const AllBooks = () => {
   console.log(selectedOption)
 
   useEffect(() => {
-    axios(`http://localhost:5000/books?filter=${selectedOption}`)
+    axios(`https://page-flow-server-side.vercel.app/books?filter=${selectedOption}`)
       .then((res) => {
         setAllBooks(res.data);
         setLoader(false);

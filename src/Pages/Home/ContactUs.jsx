@@ -16,7 +16,7 @@ const ContactUs = () => {
     console.log(data)
     try{
         setLoader(true)
-        const res = await axios.post('http://localhost:5000/contact', data)
+        const res = await axios.post('https://page-flow-server-side.vercel.app/contact', data)
         if(res.data.success){
             toast.success('Sent message successfully')
             reset();
@@ -32,7 +32,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="bg-gray-100 rounded-xl py-10">
+    <div className="rounded-xl py-10">
       <h2 className="text-3xl font-bold text-center">Get in Touch</h2>
     <ToastContainer></ToastContainer>
       <div className="flex flex-col md:flex-row max-w-6xl mx-auto overflow-hidden">

@@ -33,7 +33,7 @@ const AddBook = () => {
         // console.log(newBook)
         
         // //* POST database
-        axiosSecure.post(`http://localhost:5000/add-book`, newBook)
+        axiosSecure.post(`https://page-flow-server-side.vercel.app/add-book`, newBook)
         .then(data=>{
               if(data.data.insertedId){
                   Swal.fire({
