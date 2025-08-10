@@ -38,7 +38,7 @@ import BookDetails from '../Pages/BookDetails/BookDetails';
         },
         {
           path: '/all-books',
-          element: <PriveteRoute><AllBooks/></PriveteRoute>
+          element: <AllBooks/>
         },
         {
           path: '/update-book/:id',
@@ -50,9 +50,7 @@ import BookDetails from '../Pages/BookDetails/BookDetails';
         },
         {
           path: '/category-books/:id',
-          hydrateFallbackElement: <Loader/>,
-          loader: ({params})=> fetch(`https://page-flow-server-side.vercel.app/categories/${params.id}`),
-          element: <CategorisBooks/>
+          element: <CategorisBooks/>,
         },
         {
           path: '/book-details/:id',

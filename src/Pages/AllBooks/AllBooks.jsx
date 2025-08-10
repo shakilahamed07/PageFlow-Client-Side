@@ -3,18 +3,17 @@ import CardUpdate from "../AddBook/CardUpdate";
 import { BiSolidShow } from "react-icons/bi";
 import { MdGridView } from "react-icons/md";
 import TableView from "../AddBook/TableView";
-import useAxiosSecure from "../../Hook/useAxiosSecure";
 import Loader from "../../Components/Loader";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 const AllBooks = () => {
-  const axiosSecure = useAxiosSecure();
   const [allBooks, setAllBooks] = useState([]);
   const [viewType, setViewType] = useState("card");
   const [loader, setLoader] = useState(true);
 
   useEffect(() => {
-    axiosSecure(`/books`)
+    axios(`http://localhost:5000/books`)
       .then((res) => {
         setAllBooks(res.data)
         setLoader(false)}
@@ -66,7 +65,7 @@ const AllBooks = () => {
 
       <div className="">
         {viewType === "card" ? (
-          <div className="flex flex-wrap justify-center gap-8 mb-10">
+          <div className="flex flex-wrap justify-center gap-4 mb-10">
             {allBooks.map((book) => (
               <CardUpdate book={book} key={book._id} />
             ))}

@@ -1,12 +1,30 @@
-import React from "react";
-import { useLoaderData, useLocation } from "react-router";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 import CategoryBookCard from "./CategoryBookCard";
 import { Helmet } from "react-helmet";
+import Loader from "../../Components/Loader";
+import axios from "axios";
 
 const CategorisBooks = () => {
-  const categoryBooks = useLoaderData();
+
   const location = useLocation();
   const categoryName = location.pathname.split('/')[2];
+
+  const [categoryBooks, setCategoryBooks] = useState([]);
+  const [loader, setLoader] = useState(true);
+
+  useEffect(() => {
+    axios(`http://localhost:5000/categories/${categoryName}`)
+      .then((res) => {
+        setCategoryBooks(res.data)
+        setLoader(false)
+      })
+      .catch((err) => console.log(err));
+  }, [categoryName]);
+
+  if(loader){
+    return <Loader></Loader>
+  }
 
   return (
     <div className="mb-10 mx-2">
@@ -16,7 +34,7 @@ const CategorisBooks = () => {
       <h1 className="md:text-3xl text-xl font-bold text-center mt-3 mb-8">
         Category Name : {categoryName}
       </h1>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 lg:max-w-6xl md:max-w-2xl mx-auto mt-8">
+      <div className="flex flex-wrap justify-center gap-2 mb-10">
         {categoryBooks.map((categoryBook, index) => (
           <CategoryBookCard categoryBook={categoryBook} key={index} />
         ))}

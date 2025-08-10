@@ -6,6 +6,7 @@ const BooksCategary = ({category}) => {
 
     const navigate = useNavigate();
     const handleViewCategory = (category) =>{
+        console.log(category)
         navigate(`/category-books/${category}`)
     }
 

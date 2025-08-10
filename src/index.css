@@ -4,18 +4,17 @@
 @plugin "daisyui/theme" {
     name: "light";
     default: true;
-    --color-primary: #14c478;
+    --color-primary: #11b36d;
     --color-secondary: #57ebab;
     --color-base-200: #cdfae6;
-    --color-base-300: #f5f5f5;
+    --color-base-300: #fbfbfb;
   }
 @plugin "daisyui/theme" {
     name: "dark";
     default: true;
-    --color-primary: #14c478;
+    --color-primary: #11b36d;
     --color-secondary: #57ebab;
-    --color-base-300: #000001;
-    --color-base-400: #000001;
+    --color-base-300: #000002;
   }
 .active{
     @apply text-primary font-bold
@@ -23,5 +22,4 @@
 
 body {
   font-family: "Poppins", sans-serif;
-
 }
