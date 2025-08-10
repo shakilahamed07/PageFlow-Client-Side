@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 
 const ContactUs = () => {
@@ -34,7 +34,7 @@ const ContactUs = () => {
   return (
     <div className="bg-gray-100 rounded-xl py-10">
       <h2 className="text-3xl font-bold text-center">Get in Touch</h2>
-
+    <ToastContainer></ToastContainer>
       <div className="flex flex-col md:flex-row max-w-6xl mx-auto overflow-hidden">
         {/* Left side - Image & Text */}
         <div className="md:w-1/2 flex flex-col justify-center items-center p-6">
