@@ -7,7 +7,7 @@ const FaqSection = () => {
         {/* Left - Image and person info */}
         <div className="relative w-full lg:w-1/2">
           <img
-            src="https://i.ibb.co.com/C5ZwgXhw/FAQs-pana.png" 
+            src="https://i.ibb.co.com/4n4kFyJR/FAQs-pana.png" 
             alt=""
             className="rounded-xl mx-auto"
           />

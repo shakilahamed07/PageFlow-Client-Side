@@ -5,6 +5,7 @@ import { useLoaderData } from "react-router";
 import { Helmet } from "react-helmet";
 import FaqSection from "./FaqSection"
 import Sponsor from "./Sponsor";
+import ContactUs from "./ContactUs";
 
 const Home = () => {
   const categorys = useLoaderData();
@@ -25,16 +26,18 @@ const Home = () => {
       </section>
 
       <section>
-        <h1 className="text-3xl font-bold text-center mt-15 -mb-25">FAQ Section</h1>
+        <h1 className="text-3xl font-bold text-center mt-15 mb-10">FAQ Section</h1>
         <FaqSection/>
       </section>
 
       <section>
-        <h1 className="text-3xl font-bold text-center -mt-15 mb-5">Our Sponsor</h1>
+        <h1 className="text-3xl font-bold text-center mt-15 mb-5">Our Sponsor</h1>
         <Sponsor/>
       </section>
 
-
+      <section>
+        <ContactUs/>
+      </section>
     </div>
   );
 };
