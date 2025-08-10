@@ -50,7 +50,8 @@ const AddBook = () => {
 
 
   return (
-    <div className="shadow-xl md:px-8 rounded-2xl md:mx-5 mx-2 px-2 my-2 pt-2 mb-10">
+    <div className="max-w-[1350px] mx-auto"> 
+      <div className=" shadow-xl md:px-8 rounded-2xl md:mx-5 mx-2 px-2 my-2 pt-2 mb-10">
       <Helmet>
         <title>PageFlow || Add Book</title>
       </Helmet>
@@ -61,7 +62,7 @@ const AddBook = () => {
         </h1>
 
         <form onSubmit={hendleAddBook}>
-          <div className="grid sm:grid-cols-2 sm:gap-x-10 md:gap-x-20">
+          <div className="grid sm:grid-cols-2 sm:gap-x-10 md:gap-x-20 ">
             {/*Name*/}
             <fieldset className="fieldset max-w-2xl rounded-box  py-5">
               <label className="text-xl mb-1">Book Name</label>
@@ -165,6 +166,7 @@ const AddBook = () => {
           </div>
         </form>
       </div>
+    </div>
     </div>
   );
 };

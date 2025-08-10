@@ -37,7 +37,7 @@ const AllBooks = () => {
   };
 
   return (
-    <div>
+    <div className="max-w-[1350px] mx-auto">
       <Helmet>
         <title>PageFlow || All Book</title>
       </Helmet>
