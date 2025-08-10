@@ -1,6 +1,5 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import CardUpdate from "../AddBook/CardUpdate";
-import { BiSolidShow } from "react-icons/bi";
 import { MdGridView } from "react-icons/md";
 import TableView from "../AddBook/TableView";
 import Loader from "../../Components/Loader";
@@ -11,29 +10,30 @@ const AllBooks = () => {
   const [allBooks, setAllBooks] = useState([]);
   const [viewType, setViewType] = useState("card");
   const [loader, setLoader] = useState(true);
+  const [selectedOption, setSelectedOption] = useState(null);
+  
+  console.log(selectedOption)
 
   useEffect(() => {
-    axios(`http://localhost:5000/books`)
+    axios(`http://localhost:5000/books?filter=${selectedOption}`)
       .then((res) => {
-        setAllBooks(res.data)
-        setLoader(false)}
-      )
+        setAllBooks(res.data);
+        setLoader(false);
+      })
       .catch((err) => console.log(err));
-  }, []);
+  }, [selectedOption]);
 
-  if(loader){
-    return <Loader></Loader>
+  if (loader) {
+    return <Loader></Loader>;
   }
-  
-
-  const handleQuantity = () => {
-    const available = allBooks.filter((book) => book.quantity > 0);
-    setAllBooks(available);
-  };
 
   const handleView = (e) => {
     const view = e.target.value;
     setViewType(view);
+  };
+  const ratingFilter = (e) => {
+    const view = e.target.value;
+    setSelectedOption(view);
   };
 
   return (
@@ -41,10 +41,24 @@ const AllBooks = () => {
       <Helmet>
         <title>PageFlow || All Book</title>
       </Helmet>
-      <div className="sm:flex items-center justify-between max-w-6xl mx-auto mb-3 sm:px-10 px-3">
-        <button onClick={handleQuantity} className="btn font-bold">
-          Show Available Books
-        </button>
+      <div className="sm:flex items-center justify-between max-w-[1350px] mx-auto mb-3 px-3">
+      <div className="">
+          <fieldset className="fieldset flex items-start rounded-box py-5 max-w-2xl ">
+            <label className="text-xl mb-1 font-medium flex items-center gap-1">
+              Filter By Rating : 
+            </label>
+            <select
+              name="category"
+              className="input w-30  rounded-md border-primary focus:outline-none cursor-pointer"
+              onChange={ratingFilter}
+            >
+              <option >Select..</option>
+              <option value={-1}>High rating fast</option>
+              <option value={1}>Low rating fast</option>
+              <option value={0}>No Filter</option>
+            </select>
+          </fieldset>
+        </div>
         <div className="">
           <fieldset className="fieldset flex items-start rounded-box py-5 max-w-2xl ">
             <label className="text-2xl mb-1 font-bold flex items-center gap-1">
